@@ -7,7 +7,7 @@
     "./operate_site/audiences.py": "3a62b3e1207dba783937d6c319995186",
     "./operate_site/ubits.py": "e7466ba14c92e450bc559d1e19446233",
     "./operate_site/pterclub.py": "e0e6b232319a641d7e357d1b80016f8e",
-    "./operate_site/hdsky.py": "db1a1e7c4286f22d9bd693e0eedfe3e1",
+    "./operate_site/hdsky.py": "a39f73dff0a447ab778c9442281520de",
     "./operate_site/hdkyl.py": "15fe80db0cf0b628fae0e378b8989890",
     "./operate_site/cspt.py": "69da0a2e0c89413bf9e9710b039e1cc4",
     "./operate_site/keepfrds.py": "559cbc6ab0c243d97b6eeb986ddd39e0",
@@ -42,5 +42,5 @@
     "release/run.py": "7eeb69f695157b8831b8d3c58b6e2e3a",
     "release/run.sh": "543279f3aa245137e30ca547485ca7b8"
   },
-  "last_git_commit": "99818a67a4e73f2a7bc4ea5e8b592c2f7a2147e0"
+  "last_git_commit": "0466e7bfa23333096e4b7313cb736f4fa96a42c6"
 }
