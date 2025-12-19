@@ -1,6 +1,6 @@
 {
   "files": {
-    "./atut_serv.py": "77abdad5d71e6299a1ab75d09569abda",
+    "./atut_serv.py": "f4bbf1ed438d91105bc7940aa8e2de98",
     "./operate_site/filelist.py": "a897791f8ce7eb1f2c52a7cd5b0e0f21",
     "./operate_site/torrentleech.py": "96f30a63526f1e9f4c62f8741afc5797",
     "./operate_site/zmpt.py": "4e134d42df154e415150d159a7797df7",
@@ -43,5 +43,5 @@
     "release/run.sh": "543279f3aa245137e30ca547485ca7b8",
     "./operate_site/mteam.py": "defcf6128c2100fb4269e4227c3d37f2"
   },
-  "last_git_commit": "84aa3948cedc1eaada3bbbe3009c838f9fc642e0"
+  "last_git_commit": "982fb2ca007b219a99794ae22d4fc34c435cacc9"
 }
