@@ -29,7 +29,7 @@
     "./util/sqlite_douban.py": "6bbb0625655ae836c8bfe55a01110853",
     "./util/mapping_data.py": "832c2ecdbf23f7a85e18052a7f05c7e2",
     "./util/sqlite_operate.py": "adb7442c6b20aa2a98a169a397d55d18",
-    "./util/tools.py": "c22b841187c1b01876806ad7a19794c3",
+    "./util/tools.py": "28047e5556b3785ad03b155d8cb64cf1",
     "./main_test2.py": "1be94e38c0f1145694b7b97c41a803b4",
     "model_config/readme_rss.txt": "a1cc0d408588f3a32956644ee5f9ab33",
     "model_config/model-config-rss.toml": "b2ecea6301fc9a6cd269ac22ee59fd7d",
@@ -43,5 +43,5 @@
     "release/run.sh": "543279f3aa245137e30ca547485ca7b8",
     "./operate_site/mteam.py": "defcf6128c2100fb4269e4227c3d37f2"
   },
-  "last_git_commit": "359b16f975c32d1832a44ae45c1f638ca96b16de"
+  "last_git_commit": "bba71f939ab5c78d917c3758c7085fefa544ff3c"
 }
