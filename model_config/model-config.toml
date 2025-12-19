@@ -1,5 +1,4 @@
 port = 56789                                        #工具使用的通信端口
-authorize_code = ""                                 #鉴权识别码
 douban_ck = ""                                      #非必填，当无法查询出豆瓣编号时，可以尝试增加自己的豆瓣CK查询
 ptgen = "https://ptgen.ptvicomo.net/"               #PTGEN地址，建议自建，目前有【https://ptgen.agsvpt.work/，https://ptgen.ptvicomo.net/，https://api.iyuu.cn/App.Movie.Ptgen/】可选，也可以自己添加，有问题反馈
 ptgenck = "https://ptgen.ptvicomo.net/"             #PTGEN地址，建议填带有豆瓣cookie的地址。如没有，请两个填一样的
@@ -10,9 +9,9 @@ http_porxy = "http://ip:port"                       #代理，用于访问无法
 queue_num = 20                                      #种子缓存队列长度
 send_num = 2                                        #单次请求返回种子信息的条数
 num_per_turn = 2                                    #每轮RSS从单个站最多读取N条可用记录存入队列
-descr_loacl = ""                                    #RSS本地存储豆瓣简介，http://ip:port，默认为http://127.0.0.1:56789
+descr_loacl = "http://127.0.0.1:56789"              #RSS本地存储豆瓣简介，http://ip:port，默认为http://127.0.0.1:56789
 
-[cookies]                                           #源站和目标站的cookies信息，可在浏览器命令行输入document.cookie打印后直接复制放入。
+[rss.cookies]                                       #源站和目标站的cookies信息，可在浏览器命令行输入document.cookie打印后直接复制放入。
 "audiences.me" = ""
 "springsunday.net" = ""
 "hhanclub.top" = ""
@@ -31,12 +30,12 @@ descr_loacl = ""                                    #RSS本地存储豆瓣简介
 "cspt.top" = ""
 "www.hdkyl.in" = ""
 "hdsky.me" = ""
+"kp.m-team.cc" = ""                                 #需要填写x-api-key=xxx
 
 [rss]                                               #本模块修改不用重启
 free_check = true                                   #RSS时是否检测种子免费状态，默认true进行检测。
 time_check = true                                   #RSS时是否检测种子发布时间，5天前的不下载，默认true进行检测。
 hr_check = true                                     #RSS时是否检测种子的HR标志，有标志的不进行下载，默认true进行检测。
-up_speed_limit = 50                                 #RSS时对源站下载种子进行上传速度限制，单位MB，定义与QB中的MB一样。
 quick_scan = false                                  #RSS时快速轮循所有种子，建议执行完一次就改回false。
 
 [rss.seed_size_less_GB]                             #只R体积小于此值的种子，两者控制范围，默认为40GB，2者大小填错会自动适应，上下限都填0则无限制#本模块修改不用重启
@@ -58,6 +57,7 @@ quick_scan = false                                  #RSS时快速轮循所有种
 "cspt.top" = 40
 "www.hdkyl.in" = 40
 "hdsky.me" = 40
+"kp.m-team.cc" = 40
 
 [rss.seed_size_more_GB]                             #只R体积大于此值的种子，两者控制范围，默认为20GB，2者大小填错会自动适应，上下限都填0则无限制#本模块修改不用重启
 "audiences.me" = 0
@@ -78,6 +78,7 @@ quick_scan = false                                  #RSS时快速轮循所有种
 "cspt.top" = 0
 "www.hdkyl.in" = 0
 "hdsky.me" = 0
+"kp.m-team.cc" = 0
 
 [rss.is_used]                                       #站点RSS开关，启用修改为true，关闭修改为false#本模块修改不用重启
 "audiences.me" = false
@@ -98,6 +99,7 @@ quick_scan = false                                  #RSS时快速轮循所有种
 "cspt.top" = false
 "www.hdkyl.in" = false
 "hdsky.me" = false
+"kp.m-team.cc" = false
 
 [rss.url]                                           #站点RSS的链接，请从网站RSS生成链接里找passkey后，自行补充在最后的等于号后，注意前面的别动。如果想要自己生成RSS链接则必须选中【[标题格式]中的[类型]和[大小]】#本模块修改不用重启
 "audiences.me" = "https://audiences.me/torrentrss.php?rows=50&tags=gf&icat=1&isize=1&torrent_type=1&linktype=dl&rsskey="
@@ -118,6 +120,7 @@ quick_scan = false                                  #RSS时快速轮循所有种
 "cspt.top" = "https://cspt.top/torrentrss.php?rows=50&tea18=1&tea19=1&icat=1&isize=1&linktype=dl&passkey="
 "www.hdkyl.in" = "https://www.hdkyl.in/torrentrss.php?rows=50&tea12=1&tea7=1&tea6=1&icat=1&isize=1&linktype=dl&passkey="
 "hdsky.me" = "https://hdsky.me/torrentrss.php?rows=50&icat=1&ismalldescr=1&isize=1&linktype=dl&passkey="
+"kp.m-team.cc" = "https://rss.m-team.cc/api/rss/fetch?dl=1&pageSize=50&tkeys=ttitle%2Ctcat%2Ctsmalldescr&uid=&sign=&t="
 "model_site" = ["rss_url1", "rss_url2"]
 
 [qiyeweixin]                                        #配置企业微信推送信息相关内容

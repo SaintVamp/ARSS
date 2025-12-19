@@ -6,6 +6,7 @@
 二、创建容器：【docker run -d --network host \
 --name=auto_rss \
 -e TZ=Asia/Shanghai \
+-e UI_PASSWORD={指定密码字符} \
 -v /{RSS的父目录地址}/auto_rss/log:/auto_rss/log \
 -v /{RSS的父目录地址}/auto_rss/config:/auto_rss/config \
 -v /{RSS的父目录地址}/auto_rss/database:/auto_rss/database \
