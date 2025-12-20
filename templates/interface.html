@@ -449,10 +449,10 @@
         // 发送请求
         fetch(url, options)
             .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.text();
+                return response.json().then(data => {
+                    // 返回完整的响应对象和解析后的数据
+                    return {response: response, data: data};
+                });
             })
             .then(result => {
                 const {response, data} = result;

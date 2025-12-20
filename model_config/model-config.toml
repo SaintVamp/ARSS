@@ -9,7 +9,6 @@ http_porxy = "http://ip:port"                       #代理，用于访问无法
 queue_num = 20                                      #种子缓存队列长度
 send_num = 2                                        #单次请求返回种子信息的条数
 num_per_turn = 2                                    #每轮RSS从单个站最多读取N条可用记录存入队列
-descr_loacl = "http://127.0.0.1:56789"              #RSS本地存储豆瓣简介，http://ip:port，默认为http://127.0.0.1:56789
 
 [rss.cookies]                                       #源站和目标站的cookies信息，可在浏览器命令行输入document.cookie打印后直接复制放入。
 "audiences.me" = ""
