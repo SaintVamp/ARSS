@@ -219,11 +219,6 @@
                     <input type="number" id="num_per_turn" name="num_per_turn" value="2">
                     <div class="help-text">每轮RSS从单个站最多读取N条可用记录存入队列</div>
                 </div>
-                <div class="form-item">
-                    <label for="descr_loacl">本地存储豆瓣简介地址</label>
-                    <input type="text" id="descr_loacl" name="descr_loacl" value="">
-                    <div class="help-text">RSS本地存储豆瓣简介地址</div>
-                </div>
             </div>
             <div class="form-group">
                 <div class="form-item">
@@ -499,7 +494,6 @@
         document.getElementById('queue_num').value = config.queue_num || 20;
         document.getElementById('send_num').value = config.send_num || 2;
         document.getElementById('num_per_turn').value = config.num_per_turn || 2;
-        document.getElementById('descr_loacl').value = config.descr_loacl || "";
         document.getElementById('douban_ck').value = config.douban_ck || "";
         document.getElementById('ptgen').value = config.ptgen || "https://ptgen.ptvicomo.net/";
         document.getElementById('ptgenck').value = config.ptgenck || "https://ptgen.ptvicomo.net/";
@@ -639,10 +633,6 @@
 
         document.getElementById('num_per_turn').addEventListener('blur', function () {
             new_config.num_per_turn = parseInt(this.value);
-        });
-
-        document.getElementById('descr_loacl').addEventListener('blur', function () {
-            new_config.descr_loacl = this.value;
         });
 
         document.getElementById('douban_ck').addEventListener('blur', function () {
