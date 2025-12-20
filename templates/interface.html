@@ -327,10 +327,10 @@
 
 <script>
     // 调用API函数
-    function callApi(module, method) {
+    function callApi(method) {
         // 使用Flask提供的基础地址
-        const baseUrl = document.getElementById('baseUrl').value;
-        let url = baseUrl + '/' + module.toLowerCase() + '/' + method;
+        const baseUrl = "{{ request.host_url }}sv/rss/api";
+        let url = baseUrl + '/' + method;
 
         let options = {
             method: 'GET'
