@@ -4,7 +4,7 @@
     "./operate_site/filelist.py": "a897791f8ce7eb1f2c52a7cd5b0e0f21",
     "./operate_site/torrentleech.py": "96f30a63526f1e9f4c62f8741afc5797",
     "./operate_site/zmpt.py": "4e134d42df154e415150d159a7797df7",
-    "./operate_site/audiences.py": "e22c704c2015144d26736c59638981c7",
+    "./operate_site/audiences.py": "871d032ccd784ef3e6886e5227abacdf",
     "./operate_site/ubits.py": "c3d46dfffed328cdad4eee23510dae01",
     "./operate_site/pterclub.py": "49cbaebc4f9fe91f8cb7c9ab1fc2380e",
     "./operate_site/hdsky.py": "93d13a198295411869a72d03f0f1ccad",
@@ -43,5 +43,5 @@
     "release/run.sh": "543279f3aa245137e30ca547485ca7b8",
     "./operate_site/mteam.py": "335650d71811f098da684d885282197e"
   },
-  "last_git_commit": "5187d46a5d2a908b0fc6b4d9759ec303ed4773bd"
+  "last_git_commit": "6e61cec409d37f59802f5dd8a492448cfdb6fed2"
 }
