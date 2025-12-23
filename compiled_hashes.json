@@ -41,7 +41,7 @@
     "release/update.sh": "30d8c56db5ae060476abefb0f8ea314d",
     "release/run.py": "7eeb69f695157b8831b8d3c58b6e2e3a",
     "release/run.sh": "543279f3aa245137e30ca547485ca7b8",
-    "./operate_site/mteam.py": "335650d71811f098da684d885282197e"
+    "./operate_site/mteam.py": "92c9985a62f9d1e1ef79b97114d42340"
   },
-  "last_git_commit": "6e61cec409d37f59802f5dd8a492448cfdb6fed2"
+  "last_git_commit": "b62a161dafccdab0bd9fe197ed0df516315c7350"
 }
