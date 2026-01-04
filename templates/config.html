@@ -281,6 +281,36 @@
             </div>
         </div>
 
+        <!-- CookieCloud配置 -->
+        <div class="section">
+            <div class="section-title">CookieCloud配置</div>
+            <div class="form-group">
+                <div class="form-item">
+                    <label for="cc_url">服务器地址</label>
+                    <input type="text" id="cc_url" name="cc_server.url" value="">
+                    <div class="help-text">CC插件填写的服务器地址</div>
+                </div>
+                <div class="form-item">
+                    <label for="cc_key">用户Key</label>
+                    <input type="text" id="cc_key" name="cc_server.key" value="">
+                    <div class="help-text">CC插件生成的用户Key</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-item">
+                    <label for="cc_password">端对端加密密码</label>
+                    <input type="text" id="cc_password" name="cc_server.password" value="">
+                    <div class="help-text">CC插件生成的端到端密码</div>
+                </div>
+                <div class="form-item">
+                    <label for="forceSync">强制同步</label>
+                    <button type="button" class="btn" id="forceSync" onclick="getCookieCloud()">同步</button>
+                    <div class="help-text">首次配置完保存好三项设置，可人工点击同步按钮触发</div>
+                    <div class="help-text">后续每次系统启动后会在随机整点开始CC自动同步，并间隔24小时重复执行无需人工干预</div>
+                </div>
+            </div>
+        </div>
+
         <!-- 站点综合配置 -->
         <div class="section">
             <div class="section-title">站点综合配置</div>
@@ -322,6 +352,13 @@
                         </label>
                         <div class="help-text">是否拉取本站</div>
                     </div>
+                    <div class="form-item">
+                        <label for="site_domain">域名映射</label>
+                        <input type="text" id="site_domain" name="domain[selected_site]" value="">
+                        <div class="help-text">设置站点域名地址</div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="form-item">
                         <label for="site_seed_size_less_GB">种子体积上限</label>
                         <input type="text" id="site_seed_size_less_GB" name="seed_size_less_GB[selected_site]" value="40">
@@ -506,18 +543,19 @@
         document.getElementById('send_num').value = config.send_num || 2;
         document.getElementById('num_per_turn').value = config.num_per_turn || 2;
         document.getElementById('douban_ck').value = config.douban_ck || "";
-        document.getElementById('ptgen').value = config.ptgen || "https://ptgen.ptvicomo.net/";
-        document.getElementById('ptgenck').value = config.ptgenck || "https://ptgen.ptvicomo.net/";
-
-        // RSS子配置
+        document.getElementById('ptgen').value = config.ptgen || "";
+        document.getElementById('ptgenck').value = config.ptgenck || "";
+        if (config.cc_server) {
+            document.getElementById('cc_url').value = config.cc_server.url;
+            document.getElementById('cc_key').value = config.cc_server.key;
+            document.getElementById('cc_password').value = config.cc_server.password;
+        }
         if (config.rss) {
             document.getElementById('free_check').checked = config.rss.free_check !== undefined ? config.rss.free_check : true;
             document.getElementById('time_check').checked = config.rss.time_check !== undefined ? config.rss.time_check : true;
             document.getElementById('hr_check').checked = config.rss.hr_check !== undefined ? config.rss.hr_check : true;
             document.getElementById('quick_scan').checked = config.rss.quick_scan || false;
         }
-
-        // 通知配置
         if (config.qiyeweixin) {
             document.getElementById('qywx_is_used').checked = config.qiyeweixin.is_used || false;
             document.getElementById('corpsecret').value = config.qiyeweixin.corpsecret || "";
@@ -526,7 +564,6 @@
             document.getElementById('userid').value = config.qiyeweixin.userid || "";
             document.getElementById('mobile').value = config.qiyeweixin.mobile || "";
         }
-
         if (config.email) {
             document.getElementById('email_is_used').checked = config.email.is_used || false;
             document.getElementById('SMTP_SERVER').value = config.email.SMTP_SERVER || "";
@@ -535,7 +572,6 @@
             document.getElementById('SMTP_PASSWORD').value = config.email.SMTP_PASSWORD || "";
             document.getElementById('SMTP_NAME').value = config.email.SMTP_NAME || "";
         }
-
         if (config.iyuu) {
             document.getElementById('iyuu_is_used').checked = config.iyuu.is_used || false;
             document.getElementById('iyuu_token').value = config.iyuu.iyuu_token || "";
@@ -556,6 +592,7 @@
             container.dataset.currentSite = selectedSite;
 
             document.getElementById('site_is_used').name = `is_used.${selectedSite}`;
+            document.getElementById('site_domain').name = `domain.${selectedSite}`;
             document.getElementById('site_cookies').name = `cookies.${selectedSite}`;
             document.getElementById('site_seed_size_less_GB').name = `seed_size_less_GB.${selectedSite}`;
             document.getElementById('site_seed_size_more_GB').name = `seed_size_more_GB.${selectedSite}`;
@@ -570,25 +607,26 @@
             } else {
                 document.getElementById('site_is_used').checked = false;
             }
-
+            if (new_config.rss['domain'] && new_config.rss['domain'][selectedSite] !== undefined) {
+                document.getElementById('site_domain').value = new_config.rss['domain'][selectedSite];
+            } else {
+                document.getElementById('site_domain').value = selectedSite;
+            }
             if (new_config.rss['cookies'] && new_config.rss['cookies'][selectedSite] !== undefined) {
                 document.getElementById('site_cookies').value = new_config.rss['cookies'][selectedSite];
             } else {
                 document.getElementById('site_cookies').value = '';
             }
-
             if (new_config.rss['seed_size_less_GB'] && new_config.rss['seed_size_less_GB'][selectedSite] !== undefined) {
                 document.getElementById('site_seed_size_less_GB').value = new_config.rss['seed_size_less_GB'][selectedSite];
             } else {
                 document.getElementById('site_seed_size_less_GB').value = 40;
             }
-
             if (new_config.rss['seed_size_more_GB'] && new_config.rss['seed_size_more_GB'][selectedSite] !== undefined) {
                 document.getElementById('site_seed_size_more_GB').value = new_config.rss['seed_size_more_GB'][selectedSite];
             } else {
                 document.getElementById('site_seed_size_more_GB').value = 10;
             }
-
             if (new_config.rss['url'] && new_config.rss['url'][selectedSite] !== undefined) {
                 document.getElementById('site_url').value = new_config.rss['url'][selectedSite];
             } else {
@@ -605,11 +643,13 @@
         const selectedSite = site || document.getElementById('site_selector').value;
         if (selectedSite) {
             if (!new_config.rss['is_used']) new_config.rss['is_used'] = {};
+            if (!new_config.rss['domain']) new_config.rss['domain'] = {};
             if (!new_config.rss['cookies']) new_config.rss['cookies'] = {};
             if (!new_config.rss['seed_size_less_GB']) new_config.rss['seed_size_less_GB'] = {};
             if (!new_config.rss['seed_size_more_GB']) new_config.rss['seed_size_more_GB'] = {};
             if (!new_config.rss['url']) new_config.rss['url'] = {};
             new_config.rss['is_used'][selectedSite] = document.getElementById('site_is_used').checked;
+            new_config.rss['domain'][selectedSite] = document.getElementById('site_domain').value;
             new_config.rss['cookies'][selectedSite] = document.getElementById('site_cookies').value;
             new_config.rss['seed_size_less_GB'][selectedSite] = parseFloat(document.getElementById('site_seed_size_less_GB').value);
             new_config.rss['seed_size_more_GB'][selectedSite] = parseFloat(document.getElementById('site_seed_size_more_GB').value);
@@ -683,6 +723,12 @@
             if (!new_config.rss) new_config.rss = {};
             if (!new_config.rss['is_used']) new_config.rss['is_used'] = {};
             new_config.rss['is_used'][currentSelectedSite] = this.checked;
+        });
+
+        document.getElementById('site_domain').addEventListener('blur', function () {
+            if (!new_config.rss) new_config.rss = {};
+            if (!new_config.rss['domain']) new_config.rss['domain'] = {};
+            new_config.rss['domain'][currentSelectedSite] = this.value;
         });
 
         document.getElementById('site_cookies').addEventListener('blur', function () {
@@ -835,6 +881,28 @@
         }
 
         return changeList;
+    }
+
+    function getCookieCloud() {
+        fetch(baseUrl + '/getCookieCloud', {
+            method: 'GET'
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('拉取CC配置失败');
+            })
+            .then(data => {
+                if (data.code === 200) {
+                    alert(data.msg);
+                } else {
+                    alert(data.msg);
+                }
+            })
+            .catch(error => {
+                alert('配置备份失败，' + error.message);
+            });
     }
 
     function saveConfig() {

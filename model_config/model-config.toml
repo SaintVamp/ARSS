@@ -10,6 +10,38 @@ queue_num = 20                                      #种子缓存队列长度
 send_num = 2                                        #单次请求返回种子信息的条数
 num_per_turn = 2                                    #每轮RSS从单个站最多读取N条可用记录存入队列
 
+[cc_server]                                         #CookieCloud配置，同浏览器插件配置
+url = ""                                            #服务器地址
+key = ""                                            #用户KEY/UUID
+password = ""                                       #端对端加密密码
+
+[rss]                                               #本模块修改不用重启
+free_check = true                                   #RSS时是否检测种子免费状态，默认true进行检测。
+time_check = true                                   #RSS时是否检测种子发布时间，5天前的不下载，默认true进行检测。
+hr_check = true                                     #RSS时是否检测种子的HR标志，有标志的不进行下载，默认true进行检测。
+quick_scan = false                                  #RSS时快速轮循所有种子，建议执行完一次就改回false。
+
+[rss.domain]                                        #源站域名映射
+"audiences.me" = "audiences.me"
+"springsunday.net" = "springsunday.net"
+"hhanclub.top" = "hhanclub.top"
+"ubits.club" = "ubits.club"
+"hdhome.org" = "hdhome.org"
+"www.hddolby.com" = "www.hddolby.com"
+"pterclub.net" = "pterclub.net"
+"pt.keepfrds.com" = "pt.keepfrds.com"
+"zmpt.cc" = "zmpt.cc"
+"reelflix.xyz" = "reelflix.xyz"
+"filelist.io" = "filelist.io"
+"ourbits.club" = "ourbits.club"
+"sunnypt.top" = "sunnypt.top"
+"ptlgs.org" = "ptlgs.org"
+"pt.xingyungept.org" = "pt.xingyungept.org"
+"cspt.top" = "cspt.top"
+"www.hdkyl.in" = "www.hdkyl.in"
+"hdsky.me" = "hdsky.me"
+"kp.m-team.cc" = "kp.m-team.cc"
+
 [rss.cookies]                                       #源站和目标站的cookies信息，可在浏览器命令行输入document.cookie打印后直接复制放入。
 "audiences.me" = ""
 "springsunday.net" = ""
@@ -31,11 +63,6 @@ num_per_turn = 2                                    #每轮RSS从单个站最多
 "hdsky.me" = ""
 "kp.m-team.cc" = ""                                 #需要填写x-api-key=xxx
 
-[rss]                                               #本模块修改不用重启
-free_check = true                                   #RSS时是否检测种子免费状态，默认true进行检测。
-time_check = true                                   #RSS时是否检测种子发布时间，5天前的不下载，默认true进行检测。
-hr_check = true                                     #RSS时是否检测种子的HR标志，有标志的不进行下载，默认true进行检测。
-quick_scan = false                                  #RSS时快速轮循所有种子，建议执行完一次就改回false。
 
 [rss.seed_size_less_GB]                             #只R体积小于此值的种子，两者控制范围，默认为40GB，2者大小填错会自动适应，上下限都填0则无限制#本模块修改不用重启
 "audiences.me" = 40
