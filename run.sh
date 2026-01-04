@@ -17,17 +17,17 @@ select_best_remote() {
 git_pull_best() {
     best_remote=$(select_best_remote)
     echo "Using remote: $best_remote"
-    git pull "$best_remote" master  # 根据实际情况调整分支名
+    git pull "$best_remote" master
+    cp /auto_rss/model_config/model-config.toml /auto_rss/config/.
 }
+
 git_pull_best
-cp /auto_rss/model_config/model-config.toml /auto_rss/config/.
 python3 run.py &
 sleep 30
 while true; do
   if [ -f /auto_rss/upgrade ]; then
     git_pull_best
-    cp /auto_rss/model_config/model-config.toml /auto_rss/config/.
-    ps | grep "python3 run.py" | grep -v grep | awk '{print $1}' | xargs kill -9
+    pkill -f "python3 run.py" 2>/dev/null
     python3 run.py &
     rm /auto_rss/upgrade
   fi

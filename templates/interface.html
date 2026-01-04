@@ -129,6 +129,20 @@
                 min-width: 100%;
             }
         }
+
+        .back-button {
+            background-color: #95a5a6;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #7f8c8d;
+        }
     </style>
 </head>
 <body>
@@ -136,8 +150,10 @@
     <h1>自动拉种工具接口调用</h1>
 
     <div class="api-section">
-        <h2 class="section-title">接口列表</h2>
-
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 class="section-title">接口列表</h2>
+            <a href="/" class="back-button">返回首页</a>
+        </div>
         <div class="interface-row">
             <!-- forceRss -->
             <div class="interface-container">
@@ -145,7 +161,6 @@
                 <button onclick="callApi('forceRss')">调用接口</button>
                 <div class="result" id="forceRss_result"></div>
             </div>
-
             <!-- checkDetail -->
             <div class="interface-container">
                 <div class="interface-title">验证页面详情 (checkDetail)</div>
@@ -157,7 +172,6 @@
                 <div class="result" id="checkDetail_result"></div>
             </div>
         </div>
-
         <div class="interface-row">
             <!-- delByHash -->
             <div class="interface-container">
@@ -180,7 +194,6 @@
                 <div class="result" id="delByUrl_result"></div>
             </div>
         </div>
-
         <div class="interface-row">
             <!-- getHashInfo -->
             <div class="interface-container">
@@ -194,7 +207,6 @@
                 <button onclick="callApi('getHashInfo')">调用接口</button>
                 <div class="result" id="getHashInfo_result"></div>
             </div>
-
             <!-- updateHash -->
             <div class="interface-container">
                 <div class="interface-title">种子发布状态更新 (updateHash)</div>
@@ -210,7 +222,6 @@
                 <div class="result" id="updateHash_result"></div>
             </div>
         </div>
-
         <div class="interface-row">
             <!-- getNearlyInfo -->
             <div class="interface-container">
@@ -222,7 +233,6 @@
                 <button onclick="callApi('getNearlyInfo')">调用接口</button>
                 <div class="result" id="getNearlyInfo_result"></div>
             </div>
-
             <!-- forceUpdateIntro -->
             <div class="interface-container">
                 <div class="interface-title">强制刷新种子详情存储信息 (forceUpdateIntro)</div>
@@ -234,7 +244,6 @@
                 <div class="result" id="forceUpdateIntro_result"></div>
             </div>
         </div>
-
         <div class="interface-row">
             <!-- addByUrl -->
             <div class="interface-container">
@@ -259,7 +268,6 @@
                 <div class="result" id="addByUrl_result"></div>
             </div>
         </div>
-
         <div class="interface-row">
             <!-- addDoubanM -->
             <div class="interface-container">
@@ -279,7 +287,6 @@
                 <button onclick="callApi('addDoubanM')">调用接口</button>
                 <div class="result" id="addDouban_result"></div>
             </div>
-
             <!-- modDouban -->
             <div class="interface-container">
                 <div class="interface-title">修改豆瓣信息 (modDouban)</div>
@@ -299,8 +306,6 @@
                 <div class="result" id="modDouban_result"></div>
             </div>
         </div>
-
-
         <div class="interface-row">
             <!-- selDouban -->
             <div class="interface-container">
@@ -312,7 +317,6 @@
                 <button onclick="callApi('selDouban')">调用接口</button>
                 <div class="result" id="selDouban_result"></div>
             </div>
-
             <!-- delDouban -->
             <div class="interface-container">
                 <div class="interface-title">删除豆瓣信息 (delDouban)</div>

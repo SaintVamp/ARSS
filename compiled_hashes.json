@@ -20,7 +20,7 @@
     "./operate_site/hdhome.py": "35472da4b11c9d2e73bb4c52b1c9e29c",
     "./operate_site/hhanclub.py": "e79280eedb3e1daa506bf777b37cc801",
     "./operate_site/reelflix.py": "2081022e60feb76e3dfee5be27592f6d",
-    "./main_test4.py": "1574c8d6ac2d89c5bb2e7f446ebd4cbb",
+    "./main_test4.py": "dd07a20a143630a62c8e954ce5e6e21e",
     "./util/site_config.py": "bf4aaed661e6fabf3ba427c93e4279b6",
     "./util/notice.py": "297e1d4848e798aaef6c00c5409d1e62",
     "./util/svlog.py": "ea14138aee8cf7c0e7b12cb7118bbb7a",
@@ -40,8 +40,8 @@
     "release/commit.sh": "eb7860e1795a5cfad0b709b297597a78",
     "release/update.sh": "30d8c56db5ae060476abefb0f8ea314d",
     "release/run.py": "7eeb69f695157b8831b8d3c58b6e2e3a",
-    "release/run.sh": "543279f3aa245137e30ca547485ca7b8",
+    "release/run.sh": "4b56fc81e0a57acbfdc4f0e4cb67aed7",
     "./operate_site/mteam.py": "92c9985a62f9d1e1ef79b97114d42340"
   },
-  "last_git_commit": "6dc6bca0bd50b23b3908d5f21967235eccc5bc27"
+  "last_git_commit": "a6003ebafe258cb4d1f58a2037f8a887d3af6e51"
 }
