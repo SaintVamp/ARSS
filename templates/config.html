@@ -911,6 +911,7 @@
             .then(data => {
                 if (data.code === 200) {
                     alert(data.msg);
+                    window.location.reload(true);
                 } else {
                     alert(data.msg);
                 }
