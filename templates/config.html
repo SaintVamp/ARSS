@@ -602,33 +602,33 @@
             } else {
                 document.getElementById('site_cookies').placeholder = "请从站点请求中复制Cookies信息"
             }
-            if (new_config.rss['is_used'] && new_config.rss['is_used'][selectedSite] !== undefined) {
-                document.getElementById('site_is_used').checked = new_config.rss['is_used'][selectedSite];
+            if (new_config.rss.is_used && new_config.rss.is_used[selectedSite] !== undefined) {
+                document.getElementById('site_is_used').checked = new_config.rss.is_used[selectedSite];
             } else {
                 document.getElementById('site_is_used').checked = false;
             }
-            if (new_config.rss['domain'] && new_config.rss['domain'][selectedSite] !== undefined) {
-                document.getElementById('site_domain').value = new_config.rss['domain'][selectedSite];
+            if (new_config.rss.domain && new_config.rss.domain[selectedSite] !== undefined) {
+                document.getElementById('site_domain').value = new_config.rss.domain[selectedSite];
             } else {
                 document.getElementById('site_domain').value = selectedSite;
             }
-            if (new_config.rss['cookies'] && new_config.rss['cookies'][selectedSite] !== undefined) {
-                document.getElementById('site_cookies').value = new_config.rss['cookies'][selectedSite];
+            if (new_config.rss.cookies && new_config.rss.cookies[selectedSite] !== undefined) {
+                document.getElementById('site_cookies').value = new_config.rss.cookies[selectedSite];
             } else {
                 document.getElementById('site_cookies').value = '';
             }
-            if (new_config.rss['seed_size_less_GB'] && new_config.rss['seed_size_less_GB'][selectedSite] !== undefined) {
-                document.getElementById('site_seed_size_less_GB').value = new_config.rss['seed_size_less_GB'][selectedSite];
+            if (new_config.rss.seed_size_less_GB && new_config.rss.seed_size_less_GB[selectedSite] !== undefined) {
+                document.getElementById('site_seed_size_less_GB').value = new_config.rss.seed_size_less_GB[selectedSite];
             } else {
                 document.getElementById('site_seed_size_less_GB').value = 40;
             }
-            if (new_config.rss['seed_size_more_GB'] && new_config.rss['seed_size_more_GB'][selectedSite] !== undefined) {
-                document.getElementById('site_seed_size_more_GB').value = new_config.rss['seed_size_more_GB'][selectedSite];
+            if (new_config.rss.seed_size_more_GB && new_config.rss.seed_size_more_GB[selectedSite] !== undefined) {
+                document.getElementById('site_seed_size_more_GB').value = new_config.rss.seed_size_more_GB[selectedSite];
             } else {
                 document.getElementById('site_seed_size_more_GB').value = 10;
             }
-            if (new_config.rss['url'] && new_config.rss['url'][selectedSite] !== undefined) {
-                document.getElementById('site_url').value = new_config.rss['url'][selectedSite];
+            if (new_config.rss.url && new_config.rss.url[selectedSite] !== undefined) {
+                document.getElementById('site_url').value = new_config.rss.url[selectedSite];
             } else {
                 document.getElementById('site_url').value = 10;
             }
@@ -642,18 +642,18 @@
     function saveCurrentSiteConfig(site) {
         const selectedSite = site || document.getElementById('site_selector').value;
         if (selectedSite) {
-            if (!new_config.rss['is_used']) new_config.rss['is_used'] = {};
-            if (!new_config.rss['domain']) new_config.rss['domain'] = {};
-            if (!new_config.rss['cookies']) new_config.rss['cookies'] = {};
-            if (!new_config.rss['seed_size_less_GB']) new_config.rss['seed_size_less_GB'] = {};
-            if (!new_config.rss['seed_size_more_GB']) new_config.rss['seed_size_more_GB'] = {};
-            if (!new_config.rss['url']) new_config.rss['url'] = {};
-            new_config.rss['is_used'][selectedSite] = document.getElementById('site_is_used').checked;
-            new_config.rss['domain'][selectedSite] = document.getElementById('site_domain').value;
-            new_config.rss['cookies'][selectedSite] = document.getElementById('site_cookies').value;
-            new_config.rss['seed_size_less_GB'][selectedSite] = parseFloat(document.getElementById('site_seed_size_less_GB').value);
-            new_config.rss['seed_size_more_GB'][selectedSite] = parseFloat(document.getElementById('site_seed_size_more_GB').value);
-            new_config.rss['url'][selectedSite] = document.getElementById('site_url').value;
+            if (!new_config.rss.is_used) new_config.rss.is_used = {};
+            if (!new_config.rss.domain) new_config.rss.domain = {};
+            if (!new_config.rss.cookies) new_config.rss.cookies = {};
+            if (!new_config.rss.seed_size_less_GB) new_config.rss.seed_size_less_GB = {};
+            if (!new_config.rss.seed_size_more_GB) new_config.rss.seed_size_more_GB = {};
+            if (!new_config.rss.url) new_config.rss.url = {};
+            new_config.rss.is_used[selectedSite] = document.getElementById('site_is_used').checked;
+            new_config.rss.domain[selectedSite] = document.getElementById('site_domain').value;
+            new_config.rss.cookies[selectedSite] = document.getElementById('site_cookies').value;
+            new_config.rss.seed_size_less_GB[selectedSite] = parseFloat(document.getElementById('site_seed_size_less_GB').value);
+            new_config.rss.seed_size_more_GB[selectedSite] = parseFloat(document.getElementById('site_seed_size_more_GB').value);
+            new_config.rss.url[selectedSite] = document.getElementById('site_url').value;
         }
     }
 
@@ -719,34 +719,49 @@
             new_config.rss.quick_scan = this.checked;
         });
 
+        document.getElementById('cc_url').addEventListener('blur', function () {
+            if (!new_config.cc_server) new_config.cc_server = {};
+            new_config.cc_server.url = this.value;
+        });
+
+        document.getElementById('cc_key').addEventListener('blur', function () {
+            if (!new_config.cc_server) new_config.cc_server = {};
+            new_config.cc_server.key = this.value;
+        });
+
+        document.getElementById('cc_password').addEventListener('blur', function () {
+            if (!new_config.cc_server) new_config.cc_server = {};
+            new_config.cc_server.password = this.value;
+        });
+
         document.getElementById('site_is_used').addEventListener('change', function () {
             if (!new_config.rss) new_config.rss = {};
-            if (!new_config.rss['is_used']) new_config.rss['is_used'] = {};
-            new_config.rss['is_used'][currentSelectedSite] = this.checked;
+            if (!new_config.rss.is_used) new_config.rss.is_used = {};
+            new_config.rss.is_used[currentSelectedSite] = this.checked;
         });
 
         document.getElementById('site_domain').addEventListener('blur', function () {
             if (!new_config.rss) new_config.rss = {};
-            if (!new_config.rss['domain']) new_config.rss['domain'] = {};
-            new_config.rss['domain'][currentSelectedSite] = this.value;
+            if (!new_config.rss.domain) new_config.rss.domain = {};
+            new_config.rss.domain[currentSelectedSite] = this.value;
         });
 
         document.getElementById('site_cookies').addEventListener('blur', function () {
             if (!new_config.rss) new_config.rss = {};
-            if (!new_config.rss['cookies']) new_config.rss['cookies'] = {};
-            new_config.rss['cookies'][currentSelectedSite] = this.value;
+            if (!new_config.rss.cookies) new_config.rss.cookies = {};
+            new_config.rss.cookies[currentSelectedSite] = this.value;
         });
 
         document.getElementById('site_seed_size_less_GB').addEventListener('blur', function () {
             if (!new_config.rss) new_config.rss = {};
-            if (!new_config.rss['seed_size_less_GB']) new_config.rss['seed_size_less_GB'] = {};
-            new_config.rss['seed_size_less_GB'][currentSelectedSite] = this.value;
+            if (!new_config.rss.seed_size_less_GB) new_config.rss.seed_size_less_GB = {};
+            new_config.rss.seed_size_less_GB[currentSelectedSite] = this.value;
         });
 
         document.getElementById('site_seed_size_more_GB').addEventListener('blur', function () {
             if (!new_config.rss) new_config.rss = {};
-            if (!new_config.rss['seed_size_more_GB']) new_config.rss['seed_size_more_GB'] = {};
-            new_config.rss['seed_size_more_GB'][currentSelectedSite] = parseFloat(this.value);
+            if (!new_config.rss.seed_size_more_GB) new_config.rss.seed_size_more_GB = {};
+            new_config.rss.seed_size_more_GB[currentSelectedSite] = parseFloat(this.value);
         });
 
         // 通知配置
