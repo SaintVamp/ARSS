@@ -244,12 +244,17 @@
                     <div class="help-text">当无法查询出豆瓣编号时，可以尝试增加自己的豆瓣CK查询</div>
                 </div>
                 <div class="form-item">
+                    <label for="time_check">发布时间限制</label>
+                    <input type="text" id="time_check" name="time_check" value="">
+                    <div class="help-text">拉种时检测种子发布时间，N天前的不入队列下载</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-item">
                     <label for="ptgen">PTGEN地址</label>
                     <input type="text" id="ptgen" name="ptgen" value="https://ptgen.ptvicomo.net/">
                     <div class="help-text">PTGEN地址，建议自建</div>
                 </div>
-            </div>
-            <div class="form-group">
                 <div class="form-item">
                     <label for="ptgenck">带Cookie的PTGEN地址</label>
                     <input type="text" id="ptgenck" name="ptgenck" value="https://ptgen.ptvicomo.net/">
@@ -262,16 +267,8 @@
                     <label for="free_check">
                         <input type="checkbox" id="free_check" name="free_check" checked> 检测免费状态
                     </label>
-                    <div class="help-text">拉种时是否检测种子免费</div>
+                    <div class="help-text">拉种时是否检测种子免费，不免费的不进行下载</div>
                 </div>
-                <div class="form-item">
-                    <label for="time_check">
-                        <input type="checkbox" id="time_check" name="time_check" checked> 检测发布时间
-                    </label>
-                    <div class="help-text">拉种时是否检测种子发布时间，5天前的不下载</div>
-                </div>
-            </div>
-            <div class="form-group">
                 <div class="form-item">
                     <label for="hr_check">
                         <input type="checkbox" id="hr_check" name="hr_check" checked> 检测HR标志
@@ -558,7 +555,7 @@
         }
         if (config.rss) {
             document.getElementById('free_check').checked = config.rss.free_check !== undefined ? config.rss.free_check : true;
-            document.getElementById('time_check').checked = config.rss.time_check !== undefined ? config.rss.time_check : true;
+            document.getElementById('time_check').value = isNaN(parseFloat(config.rss.time_check)) ? 5 : parseFloat(config.rss.time_check);
             document.getElementById('hr_check').checked = config.rss.hr_check !== undefined ? config.rss.hr_check : true;
             document.getElementById('quick_scan').checked = config.rss.quick_scan || false;
         }
@@ -710,9 +707,9 @@
             new_config.rss.free_check = this.checked;
         });
 
-        document.getElementById('time_check').addEventListener('change', function () {
+        document.getElementById('time_check').addEventListener('blur', function () {
             if (!new_config.rss) new_config.rss = {};
-            new_config.rss.time_check = this.checked;
+            new_config.rss.time_check = parseFloat(this.value);
         });
 
         document.getElementById('hr_check').addEventListener('change', function () {
